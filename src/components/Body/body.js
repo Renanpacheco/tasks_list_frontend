@@ -1,13 +1,10 @@
 import * as React from "react";
-//import Box from "@mui/material/Box";
-//import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-//import { styled } from "@mui/material/styles";
 import Card from "../Cards/card";
 import Button from "@mui/material/Button";
-//import Excluir from '../Modals/modal_excluir';
 import Update from '../Modals/update';
-// use on input value={item.name}
+//import SwapCards from "../Cards/testando"
+
 const mock = [
   {
     id: 1,
@@ -29,8 +26,9 @@ const mock = [
   },
 ];
 
+
+
 export default function BasicStack() {
-  //const [openModal, setOpenModal] = React.useState(false)
   const [openModalForm, setOpenModalForm] = React.useState(false);
   
   return (
@@ -68,17 +66,7 @@ export default function BasicStack() {
 
         </form>
       </Update>
-
-      {/*<div>
-        <button onClick={() => setOpenModal(true)}>abrir modal</button>
-      </div>
-
-      <Excluir
-        isOpenn={openModal}
-        setModalClose={() => setOpenModal(!openModal)}
-      >
-        <p>Deseja realmente excluir essa tarefa?</p>
-      </Excluir>*/}
     </Stack>
+    
   );
 }
