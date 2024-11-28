@@ -13,11 +13,7 @@ const CardList = () => {
   const [openModalForm, setOpenModalForm] = React.useState(false);
   const [cards, setCards] = useState([
     { id: "1", name: "Tarefa 1", cost: 100, date: "10/12/2024", order_task: 2 },
-    {
-      id: "2",
-      name: "Tarefa 2",
-      cost: 1500,
-      date: "10/12/2024",
+    { id: "2", name: "Tarefa 2", cost: 1500, date: "10/12/2024",
       order_task: 1,
     },
     { id: "3", name: "Tarefa 3", cost: 300, date: "10/12/2024", order_task: 0 },
@@ -48,8 +44,8 @@ const CardList = () => {
           <div
             key={card.id}
             style={{
-              width: "500px",
-              height: "500px",
+              width: "50%",
+              height: "50%",
               backgroundColor: getBackgroundColor(card.cost),
               margin: "10px",
               display: "flex",

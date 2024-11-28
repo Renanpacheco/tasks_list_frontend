@@ -15,7 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-const drawerWidth = 240;
+const drawerWidth = "100%";
 const navItems = ["Confirmar", "Cancelar"];
 
 function DrawerAppBar(props) {
@@ -102,10 +102,6 @@ function DrawerAppBar(props) {
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
