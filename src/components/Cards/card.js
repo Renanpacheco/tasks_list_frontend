@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
-//import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Box, Button, Grid2, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-//import { styled } from "@mui/system";
 import Excluir from "../Modals/modal_excluir";
 import Update from "../Modals/update";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
+import axios from 'axios'
 
 const CardList = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [openModalForm, setOpenModalForm] = React.useState(false);
-  const [cards, setCards] = useState([
-    { id: "1", name: "Tarefa 1", cost: 100, date: "10/12/2024", order_task: 2 },
-    { id: "2", name: "Tarefa 2", cost: 1500, date: "10/12/2024",
-      order_task: 1,
-    },
-    { id: "3", name: "Tarefa 3", cost: 300, date: "10/12/2024", order_task: 0 },
-  ]);
+  const [cards, setCards] = useState(['']);
 
   const swapCards = (index1, index2) => {
     const newCards = [...cards];
@@ -30,22 +23,29 @@ const CardList = () => {
   const getBackgroundColor = (cost) => {
     return cost < 1000 ? "lightblue" : "lightcoral";
   };
+  axios.get("http://localhost:5000/")
+    .then(function (response) {
+      
+      console.log(response);
+      setCards(response.data);
+    })
+    .catch(function (error) {
+      // manipula erros da requisição
+      console.error(error);
+    });
+    
+  
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+    <Box>
+      <Box>
         {cards.map((card, index) => (
-          <div
-            key={card.id}
+          <Grid2
+            container
+            key={card.order_task}
             style={{
-              width: "50%",
-              height: "50%",
+              width: "99%",
+              height: "20%",
               backgroundColor: getBackgroundColor(card.cost),
               margin: "10px",
               display: "flex",
@@ -56,18 +56,22 @@ const CardList = () => {
               borderRadius: "8px",
             }}
           >
-            {card.name}
-            <br />
-            <Typography>
-              {Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              }).format(card.cost)}
-            </Typography>
+            <Grid2 size={10}>
+              {card.name}
+              <Typography>
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(card.cost)}
+              </Typography>
 
-            <Typography>{card.date}</Typography>
+              <Typography>{card.date_limit}</Typography>
+            </Grid2>
 
-            <Box sx={{ position: "relative", left: "200px", bottom: "50px" }}>
+            <Grid2
+              size={2}
+              sx={{ position: "relative", left: "200px", bottom: "50px" }}
+            >
               <Button
                 onClick={() => setOpenModalForm(true)}
                 startIcon={<EditIcon />}
@@ -75,38 +79,10 @@ const CardList = () => {
                 Editar
               </Button>
               <Update
+                card={card}
                 isOpenn={openModalForm}
                 setModalClose={() => setOpenModalForm(!openModalForm)}
-              >
-                <form>
-                  <div>
-                    <label for="name">Tarefa: </label>
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder={card.name}
-                    ></input>
-                  </div>
-                  <div>
-                    <label for="cost">Custo: </label>
-                    <input
-                      type="number"
-                      name="cost"
-                      placeholder={card.cost}
-                    ></input>
-                  </div>
-
-                  <div>
-                    <label for="date">Tarefa: </label>
-                    <input
-                      input
-                      type="date"
-                      name="date"
-                      placeholder={card.date}
-                    ></input>
-                  </div>
-                </form>
-              </Update>
+              ></Update>
 
               <Button
                 onClick={() => setOpenModal(true)}
@@ -122,10 +98,7 @@ const CardList = () => {
               >
                 <p>Deseja realmente excluir essa tarefa?</p>
               </Excluir>
-            </Box>
 
-            {/* Botões para trocar */}
-            <Box>
               <Button
                 startIcon={<ArrowDownward />}
                 onClick={() => swapCards(index, (index + 1) % cards.length)}
@@ -144,11 +117,11 @@ const CardList = () => {
               >
                 Up
               </Button>
-            </Box>
-          </div>
+            </Grid2>
+          </Grid2>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

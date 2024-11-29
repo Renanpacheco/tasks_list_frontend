@@ -2,7 +2,7 @@ import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Card from "../Cards/card";
 import Button from "@mui/material/Button";
-import Update from '../Modals/update';
+import NewTask from '../Modals/newTask';
 
 export default function BasicStack() {
   const [openModalForm, setOpenModalForm] = React.useState(false);
@@ -11,7 +11,7 @@ export default function BasicStack() {
       
       <Card />
       <Button onClick={() => setOpenModalForm(true)}>Incluir</Button>
-      <Update
+      <NewTask
         isOpenn={openModalForm}
         setModalClose={() => setOpenModalForm(!openModalForm)}
       >
@@ -39,7 +39,7 @@ export default function BasicStack() {
             ></input>
           </div>
         </form>
-      </Update>
+      </NewTask>
       
     </Stack>
   );

@@ -21,19 +21,46 @@ const MODAL_STYLE ={
     backgroundColor: 'rgb(255,255,255)',
     
 }
-export default function Modal({isOpenn,setModalClose, children}) {
+export default function Modal({isOpenn,setModalClose, card}) {
     if (isOpenn){
         return (
-            <div style={BACKGROUND_STYLE}>
-                <div style={MODAL_STYLE}>
-                    <div>
-                        {children}
-                    </div>
-                    <button onClick={setModalClose}>Salvar</button>
-                    <button onClick={setModalClose}>Cancelar</button>
-                </div>
+          <div style={BACKGROUND_STYLE}>
+            <div style={MODAL_STYLE}>
+              <div>
+                <form>
+                  <div>
+                    <label for="name">Tarefa: </label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder={card.name}
+                    ></input>
+                  </div>
+                  <div>
+                    <label for="cost">Custo: </label>
+                    <input
+                      type="number"
+                      name="cost"
+                      placeholder={card.cost}
+                    ></input>
+                  </div>
+
+                  <div>
+                    <label for="date">Tarefa: </label>
+                    <input
+                      input
+                      type="date"
+                      name="date"
+                      placeholder={card.date}
+                    ></input>
+                  </div>
+                </form>
+              </div>
+              <button onClick={setModalClose}>Salvar</button>
+              <button onClick={setModalClose}>Cancelar</button>
             </div>
-        )
+          </div>
+        );
     }
     return null
     

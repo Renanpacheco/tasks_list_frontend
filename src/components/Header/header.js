@@ -69,7 +69,7 @@ function DrawerAppBar(props) {
             Lista de tarefas
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button sx={{ color: "#0f0" }}>Confirmar</Button>
+            <Button sx={{ color: "#0f0", display:{ xl: 'none', xs: 'block'}}}>Confirmar</Button>
             <Button sx={{ color: "#f00" }}>Cancelar</Button>
           </Box>
         </Toolbar>
