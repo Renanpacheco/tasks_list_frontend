@@ -13,7 +13,6 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 const drawerWidth = "100%";
 const navItems = ["Confirmar", "Cancelar"];
@@ -68,10 +67,7 @@ function DrawerAppBar(props) {
           >
             Lista de tarefas
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button sx={{ color: "#0f0", display:{ xl: 'none', xs: 'block'}}}>Confirmar</Button>
-            <Button sx={{ color: "#f00" }}>Cancelar</Button>
-          </Box>
+          
         </Toolbar>
       </AppBar>
       <nav>

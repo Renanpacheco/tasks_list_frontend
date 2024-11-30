@@ -80,6 +80,7 @@ const CardComponent = ({
         setCloseModal={() => setOpenDeleteModal(!openDeleteModal)}
       />
       <UpdateTaskModal
+        id={id}
         openModal={openUpdateModal}
         setCloseModal={() => setOpenUpdateModal(!openUpdateModal)}
       />

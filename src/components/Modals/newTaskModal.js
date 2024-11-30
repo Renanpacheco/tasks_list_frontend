@@ -5,7 +5,7 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
-const NewTaskModal = ({ openModal, setCloseModal }) => {
+const NewTaskModal = ({ openModal, setCloseModal}) => {
   const StyledBox = styled(Box)({
     position: "absolute",
     top: "30%",
@@ -17,18 +17,18 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
     justifyItems: "center",
   });
 
-  const [nameTask, setNameTask] =useState("")
-  const handleChange = (e)=> {
-    setNameTask(e.target.value)
-  }
+  const [name, setNameTask] =useState("")
+  const [cost, setCost] = useState("");
+  const [dateLimit, setDate] = useState("");
 
   async function createTask(name, cost, dateLimit){
     console.log("createTask",name,cost,dateLimit);
     await axios
       .post("http://localhost:5000/create", {
-        name: {nameTask},
+        name: name,
         cost: cost,
         dateLimit: dateLimit,
+        //order: order,
       })
       .then(function (response) {
         console.log(response);
@@ -47,25 +47,43 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
           <Typography>Nova Tarefa</Typography>
           <Box>
             <label for="name">Tarefa: </label>
-            <input type="text" onChange={handleChange} name="name" placeholder="Nome da tarefa" />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setNameTask(e.target.value)}
+              name="name"
+              placeholder="Nome da tarefa"
+            />
           </Box>
           <Box>
             <label for="cost">Custo: </label>
-            <input type="number" name="cost" placeholder="Custo da tarefa" />
+            <input
+              type="number"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
+              name="cost"
+              placeholder="Custo da tarefa"
+            />
           </Box>
           <Box>
             <label for="date">Tarefa: </label>
             <input
-              input
+              
               type="date"
+              value={dateLimit}
+              onChange={(e) => setDate(e.target.value)}
               name="date"
               placeholder="Data limite para a tarefa"
             />
           </Box>
-          <Button variant="outlined" color="success" onClick={() =>{
-            createTask();
-            setCloseModal();
-          }}>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={() => {
+              createTask(name,cost,dateLimit);
+              setCloseModal();
+            }}
+          >
             Salvar
           </Button>
           <Button variant="outlined" color="error" onClick={setCloseModal}>
