@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 
 const BACKGROUND_STYLE = {
   position: "fixed",
@@ -20,11 +22,23 @@ const MODAL_STYLE = {
 };
 export default function Modal({ isOpenn, setModalClose, children }) {
   if (isOpenn) {
+    const { name, cost, date_limit } = children
     return (
       <div style={BACKGROUND_STYLE}>
         <div style={MODAL_STYLE}>
           <div>{children}</div>
-          <button onClick={setModalClose}>Salvar</button>
+          <button onClick={()=>{
+            axios.post('http://localhost:5000/create', {
+              name,
+              cost,
+              date_limit
+            }).then(function(response) {
+              console.log("Dados salvos", response.data)
+            }).catch(function(error){console.log(error)})
+            
+            }
+            
+          }>Salvar</button>
           <button onClick={setModalClose}>Cancelar</button>
         </div>
       </div>
