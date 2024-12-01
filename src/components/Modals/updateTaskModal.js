@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -17,9 +17,6 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
     justifyItems: "center",
   });
 
-  const [name, setNameTask] = useState("");
-  const [cost, setCost] = useState("");
-  const [dateLimit, setDate] = useState("");
 
   async function updateTask(id,name, cost, dateLimit) {
     console.log("createTask",id, name, cost, dateLimit);
@@ -43,32 +40,32 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
         <form>
           <Typography>{`Editar Tarefa ${id}`}</Typography>
           <Box>
-            <label for="name">Tarefa: </label>
             <input
+              id="nt"
               type="text"
-              value={name}
-              onChange={(e) => setNameTask(e.target.value)}
+              //value={name}
+              //onChange={(e) => setNameTask(e.target.value)}
               name="name"
               placeholder="Nome da tarefa"
             />
           </Box>
           <Box>
-            <label for="cost">Custo: </label>
             <input
+              id="ct"
               type="number"
-              value={cost}
-              onChange={(e) => setCost(e.target.value)}
+              //value={cost}
+              //onChange={(e) => setCost(e.target.value)}
               name="cost"
               placeholder="Custo da tarefa"
             />
           </Box>
           <Box>
-            <label for="date">Tarefa: </label>
+            <label for="dateLimit">Data limite: </label>
             <input
-              //input
-              value={dateLimit}
-              onChange={(e) => setDate(e.target.value)}
+              id="dt"
               type="date"
+              //value={dateLimit}
+              //onChange={(e) => setDate(e.target.value)}
               name="date"
               placeholder="Data limite para a tarefa"
             />
@@ -77,6 +74,9 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
             variant="outlined"
             color="success"
             onClick={() => {
+              const name = document.getElementById("nt").value;
+              const cost = document.getElementById("ct").value;
+              const dateLimit = document.getElementById("dt").value;
               updateTask(id, name, cost, dateLimit);
               setCloseModal();
             }}

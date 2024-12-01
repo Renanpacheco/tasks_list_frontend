@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+
 const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
   const StyledBox = styled(Box)({
     position: "absolute",
@@ -16,6 +17,7 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
     alignContent: "center",
     justifyItems: "center",
   });
+  //const [openSucessModal, setOpenSucessModal] = useState(false)
 
   async function deleteTask(id){
     console.log("delete", id);
@@ -25,6 +27,8 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
       
     }).then(function(response){
       console.log(response)
+      //setOpenSucessModal(true)
+      //setCloseModal(false)
     }).catch(function(error){
       console.log(error)
     });
@@ -40,10 +44,15 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
         <Box>
           <Typography>Tem certeza que deseja Excluir?</Typography>
         </Box>
-        <Button variant="outlined" color="success" onClick={() =>{
-          deleteTask(id)
-          setCloseModal()}}>
-          Sim
+        <Button
+          variant="outlined"
+          color="success"
+          onClick={() => {
+            deleteTask(id);
+            setCloseModal();
+          }}
+        >
+          Sim 
         </Button>
         <Button variant="outlined" color="error" onClick={setCloseModal}>
           Não
