@@ -17,10 +17,6 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
     justifyItems: "center",
   });
 
-  /*const [name, setNameTask] = useState("");
-  const [cost, setCost] = useState("");
-  const [dateLimit, setDate] = useState("");*/
-
   async function createTask(nameT, costT, dateLimitT) {
     console.log("createTask", nameT, costT, dateLimitT);
     await axios
@@ -28,7 +24,7 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
         name: nameT,
         cost: costT,
         dateLimit: dateLimitT,
-        //order: order,
+        
       })
       .then(function (response) {
         console.log(response);
@@ -47,8 +43,7 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
             <input
               id="nt"
               type="text"
-              //value={name}
-              //onChange={(e) => setNameTask(e.target.value)}
+              
               name="name"
               placeholder="Nome da tarefa"
             />
@@ -57,8 +52,7 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
             <input
               id="ct"
               type="number"
-              //value={cost}
-              //onChange={(e) => setCost(e.target.value)}
+              
               name="cost"
               placeholder="Custo da tarefa"
             />
@@ -68,8 +62,7 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
             <input
               id="dt"
               type="date"
-              //value={dateLimit}
-              //onChange={(e) => setDate(e.target.value)}
+              
               name="date"
               placeholder="Data limite para a tarefa"
             />

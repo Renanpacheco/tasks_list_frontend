@@ -19,7 +19,7 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
 
 
   async function updateTask(id,name, cost, dateLimit) {
-    console.log("createTask",id, name, cost, dateLimit);
+    
     await axios
       .put(`http://localhost:5000/update/${id}`, {
         name: name,
@@ -43,8 +43,7 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
             <input
               id="nt"
               type="text"
-              //value={name}
-              //onChange={(e) => setNameTask(e.target.value)}
+              
               name="name"
               placeholder="Nome da tarefa"
             />
@@ -53,8 +52,7 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
             <input
               id="ct"
               type="number"
-              //value={cost}
-              //onChange={(e) => setCost(e.target.value)}
+              
               name="cost"
               placeholder="Custo da tarefa"
             />
@@ -64,8 +62,7 @@ const UpdateTaskModal = ({ openModal, setCloseModal, id}) => {
             <input
               id="dt"
               type="date"
-              //value={dateLimit}
-              //onChange={(e) => setDate(e.target.value)}
+              
               name="date"
               placeholder="Data limite para a tarefa"
             />

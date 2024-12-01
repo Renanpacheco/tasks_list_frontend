@@ -7,9 +7,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Email from "@mui/icons-material/Email";
 
-// Estilização do Paper
+// style of paper
 const DemoPaper = styled(Paper)(({ theme }) => ({
-  width: "100%", // Ajuste da largura
+  width: "100%", // fix width
   height: "100%",
   padding: theme.spacing(2),
   ...theme.typography.body2,
@@ -31,7 +31,7 @@ export default function SimplePaper() {
         </IconButton>
         <IconButton
           component="a"
-          href="https://www.linkedin.com/in/renan-pacheco-4b920274/" // Coloque seu link do LinkedIn
+          href="https://www.linkedin.com/in/renan-pacheco-4b920274/"
           target="_blank"
           aria-label="LinkedIn"
           sx={{ color: "#0A66C2", marginRight: 2 }}
@@ -40,7 +40,7 @@ export default function SimplePaper() {
         </IconButton>
         <IconButton
           component="a"
-          href="https://github.com/Renanpacheco" // Coloque seu link do GitHub
+          href="https://github.com/Renanpacheco" 
           target="_blank"
           aria-label="GitHub"
           sx={{ color: "#181717" }}

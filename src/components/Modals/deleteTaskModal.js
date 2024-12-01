@@ -17,7 +17,7 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
     alignContent: "center",
     justifyItems: "center",
   });
-  //const [openSucessModal, setOpenSucessModal] = useState(false)
+  
 
   async function deleteTask(id){
     console.log("delete", id);
@@ -27,8 +27,7 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
       
     }).then(function(response){
       console.log(response)
-      //setOpenSucessModal(true)
-      //setCloseModal(false)
+      
     }).catch(function(error){
       console.log(error)
     });
