@@ -35,7 +35,7 @@ const CardList = () => {
   // Load cards of server and sort by orderTask
   useEffect(() => {
     axios
-      .get("http://localhost:5000/")
+      .get("http://renanpachecotodolist.xyz/api")
       .then(function (response) {
         
         const sortedCards = response.data.sort(
