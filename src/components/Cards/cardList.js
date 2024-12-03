@@ -23,7 +23,7 @@ const CardList = () => {
 
     
     axios
-      .put("http://localhost:5000/change", { order_task: newOrder })
+      .put("http://renanpachecotodolist.xyz/api/change", { order_task: newOrder })
       .then((response) => {
         console.log("Ordem atualizada no backend");
       })
