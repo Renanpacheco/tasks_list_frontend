@@ -20,7 +20,7 @@ const NewTaskModal = ({ openModal, setCloseModal }) => {
   async function createTask(nameT, costT, dateLimitT) {
     console.log("createTask", nameT, costT, dateLimitT);
     await axios
-      .post("http://localhost:5000/create", {
+      .post("http://renanpachecotodolist.xyz/api/create", {
         name: nameT,
         cost: costT,
         dateLimit: dateLimitT,
