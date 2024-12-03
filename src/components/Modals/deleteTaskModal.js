@@ -23,7 +23,7 @@ const DeleteTaskModal = ({ openModal, setCloseModal, id }) => {
     console.log("delete", id);
     axios({
       method: "delete",
-      url: `http://localhost:5000/remove/${id}`,
+      url: `http://renanpachecotodolist.xyz/api/remove/${id}`,
       
     }).then(function(response){
       console.log(response)
