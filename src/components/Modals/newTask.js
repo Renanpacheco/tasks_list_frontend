@@ -28,7 +28,7 @@ export default function Modal({ isOpenn, setModalClose, children }) {
         <div style={MODAL_STYLE}>
           <div>{children}</div>
           <button onClick={()=>{
-            axios.post('http://localhost:5000/create', {
+            axios.post('http://renanpachecotodolist.xyz/api/create', {
               name,
               cost,
               date_limit
